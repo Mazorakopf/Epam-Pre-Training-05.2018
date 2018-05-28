@@ -20,8 +20,13 @@ public class MyMath {
 	 */
 	public static double sqAreaRing(int r1, int r2) {
 
-		return Math.PI * r1 * r1 - Math.PI * r2 * r2;
+		return  sqCircle(r1) - sqCircle(r2);
 
+	}
+	
+	public static double sqCircle(int r) {
+		
+		return Math.PI * r * r;
 	}
 	
 	/**
@@ -37,11 +42,15 @@ public class MyMath {
 	 */
 	public static double aMean(int num) {
 
-		NumToDigits digit = new NumToDigits(num, NumToDigits.SIX_DIGIT);
+		int thSxth = num % 10;
+		int thFfth = num / 10 % 10;
+		int thFrth = num / 100 % 10;
+		int thTrd  = num / 1000 % 10;
+		int thSnd  = num / 10000 % 10;
+		int thFst  = num / 100000;
 		int numOfdigit = 6;
 
-		return (digit.getThFst() + digit.getThSnd() + digit.getThTrd()
-				+ digit.getThFrth() + digit.getThFfth() + digit.getThSxth()) / numOfdigit;
+		return (thFst + thSnd + thTrd + thFrth + thFfth + thSxth) / numOfdigit;
 
 	}
 	
@@ -58,12 +67,15 @@ public class MyMath {
 	 */
 	public static double gMean(int num) {
 		
-		NumToDigits digit = new NumToDigits(num, NumToDigits.SIX_DIGIT);
+		int thSxth = num % 10;
+		int thFfth = num / 10 % 10;
+		int thFrth = num / 100 % 10;
+		int thTrd  = num / 1000 % 10;
+		int thSnd  = num / 10000 % 10;
+		int thFst  = num / 100000;
 		int numOfdigit = 6;
 		
-		return Math.pow(digit.getThFst() * digit.getThSnd() * digit.getThTrd()
-						* digit.getThFrth() * digit.getThFfth() * digit.getThSxth(),
-																		1. / numOfdigit);
+		return Math.pow(thFst * thSnd * thTrd * thFrth * thFfth * thSxth, 1. / numOfdigit);
 	}
 
 }

@@ -18,9 +18,12 @@ public class Task02 {
 
 		List<Integer> listI = new ArrayList<Integer>();
 		
-		System.out.println("a = b = c ? ---> " + EvaluatorOfNum.isEqual(6, 6, 6));
+		System.out.println("a = b = c ? ---> " + EvaluatorOfNum.isEqual(6, 3, 6));
 		
-		Dino.weightConvert(Dino.VELOCIRAPTOR);
+		System.out.println("Weight in kilograms: "+ Dino.showWeight(Dino.VELOCIRAPTOR));
+		System.out.println("Weight in grams: "+ Dino.сonvertToGram(Dino.VELOCIRAPTOR));
+		System.out.println("Weight in miligrams: "+ Dino.сonvertToMiliGram(Dino.VELOCIRAPTOR));
+		System.out.println("Weight in tones: "+ Dino.сonvertToTone(Dino.VELOCIRAPTOR));
 		
 		System.out.println("Square area of the ring: " + MyMath.sqAreaRing(30, 20));
 		

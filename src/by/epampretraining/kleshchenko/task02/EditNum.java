@@ -17,11 +17,16 @@ public class EditNum {
 	 */
 	public static int reverseNum(int num) {
 
-		NumToDigits digit = new NumToDigits(num, NumToDigits.SEVEN_DIGIT);
+		int thSnth = num % 10;
+		int thSxth = (num /= 10) % 10;
+		int thFfth = (num /= 10) % 10;
+		int thFrth = (num /= 10) % 10;
+		int thTrd  = (num /= 10) % 10;
+		int thSnd  = (num /= 10) % 10;
+		int thFst  = (num /= 10);
 
-		return digit.getThSnth() * 1000000 + digit.getThSxth() * 100000 + digit.getThFfth() * 10000
-				+ digit.getThFrth() * 1000 + digit.getThTrd() * 100 + digit.getThSnd() * 10 + digit.getThFst();
-
+		return thSnth * 1000000 + thSxth * 100000 + thFfth * 10000 
+				+ thFrth * 1000 + thTrd * 100 + thSnd * 10 + thFst;
 	}
 	
 	/**

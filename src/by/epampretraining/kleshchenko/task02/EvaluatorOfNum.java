@@ -18,7 +18,7 @@ public class EvaluatorOfNum {
 	 */
 	public static boolean isEqual(int a, int b, int c) {
 
-		return (a == b) & (b == c);
+		return a == b && b == c;
 	}
 
 	/**
@@ -33,10 +33,12 @@ public class EvaluatorOfNum {
 	 */
 	public static boolean isIncreaseNum(int num) {
 
-		NumToDigits digit = new NumToDigits(num, NumToDigits.FOUR_DIGIT);
+		int thFrth = num % 10;
+		int thTrd  = num / 10 % 10;
+		int thSnd  = num / 100 % 10;
+		int thFst  = num / 1000;
 
-		return (digit.getThFrth() > digit.getThTrd()) && (digit.getThTrd() > digit.getThSnd())
-				&& (digit.getThSnd() > digit.getThFst());
+		return thFrth > thTrd && thTrd > thSnd && thSnd > thFst;
 
 	}
 
@@ -52,10 +54,12 @@ public class EvaluatorOfNum {
 	 */
 	public static boolean isDecreaseNum(int num) {
 
-		NumToDigits digit = new NumToDigits(num, NumToDigits.FOUR_DIGIT);
-
-		return (digit.getThFrth() < digit.getThTrd()) && (digit.getThTrd() < digit.getThSnd())
-				&& (digit.getThSnd() < digit.getThFst());
+		int thFrth = num % 10;
+		int thTrd  = num / 10 % 10;
+		int thSnd  = num / 100 % 10;
+		int thFst  = num / 1000;		
+		
+		return thFrth < thTrd && thTrd < thSnd && thSnd < thFst;
 		
 	}
 

@@ -2,12 +2,13 @@ package by.epampretraining.kleshchenko.task02;
 
 /**
  * The class {@code Dino} contains constant field that store the weight of the
- * dinosaurs and method <code>{@link #weightConvert(int dino)}<code>.
+ * dinosaurs and method for convert weight.
  * 
  * @author Vladislav Kleshchenko
  */
 public class Dino {
 
+	//Weight of dinosaurs in kilograms.
 	public static final int VELOCIRAPTOR = 20;
 	public static final int MEGALOSAURUS = 1100;
 	public static final int DIPLODOCUS = 113000;
@@ -15,16 +16,43 @@ public class Dino {
 	public static final int TRICERATOPS = 9000;
 
 	/**
-	 * Prints the weight of dinosaurs in kilograms, grams, milligrams and tons.
-	 * 
 	 * @param dino		Constant field that is called a dinosaur species and keeps its
 	 *           		weight in kilograms.
+	 * @retun 			The weight of dinosaurs in kilograms.
 	 */
-	public static void weightConvert(int dino) {
+	public static double showWeight(int dino) {
 
-		System.out.printf("Dinasours weight:\nKg = %d\ng = %f\nmg = %f\nt = %f\n",
-											dino, dino * 1E3, dino * 1E6, dino / 1E3);
+		return dino;
+	}
+	
+	/**
+	 * @param dino		Constant field that is called a dinosaur species and keeps its
+	 *           		weight in kilograms.
+	 * @retun 			The weight of dinosaurs in grams.
+	 */
+	public static double сonvertToGram(int dino) {
 
+		return dino * 1E3;
+	}
+	
+	/**
+	 * @param dino		Constant field that is called a dinosaur species and keeps its
+	 *           		weight in kilograms.
+	 * @retun 			The weight of dinosaurs in Miligram.
+	 */
+	public static double сonvertToMiliGram(int dino) {
+
+		return dino * 1E6;
+	}
+	
+	/**
+	 * @param dino		Constant field that is called a dinosaur species and keeps its
+	 *           		weight in kilograms.
+	 * @return 			The weight of dinosaurs in tone.
+	 */
+	public static double сonvertToTone(int dino) {
+
+		return dino / 1E3;
 	}
 
 }
