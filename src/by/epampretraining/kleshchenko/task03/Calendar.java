@@ -46,7 +46,7 @@ public class Calendar {
 		} else if ( !evenMonth && month > JULY && day > 30) {
 			correct = false;
 		} else if ((!isLeapYear(year) && month == FEBRUARY && day > 28)
-						|| (isLeapYear(year) && month == FEBRUARY && day > 29)) {
+				|| (isLeapYear(year) && month == FEBRUARY && day > 29)) {
 			correct = false;
 		}
 

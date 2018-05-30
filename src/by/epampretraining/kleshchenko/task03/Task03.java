@@ -8,10 +8,9 @@ public class Task03 {
 		System.out.println("Number of heads: " + Dragon.checkNumOfHeads(325));
 		System.out.println("Number of eyes: " + Dragon.checkNumOfEyes(325));
 		
-		System.out.println("It is triangle ? " + Triangle.isTriangle(0,0,0,6,8,1));
-		System.out.println("It is triangle rectangular ? " + Triangle.isTriangleRect(0,0,0,6,8,0));
+		System.out.println("It is " + Triangle.isTriangle(0,0,0,6,8,0));
 	
-		System.out.println("It's vowel ? " + Vowel.isVowel('b'));
+		System.out.println("It's vowel ? " + Vowel.isVowel('u'));
 		
 		System.out.println("Hm, I think your mood is " + MoodSensor.scanningSoul());
 		

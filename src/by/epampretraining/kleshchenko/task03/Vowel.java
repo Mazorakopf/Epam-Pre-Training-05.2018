@@ -43,25 +43,15 @@ public class Vowel {
 		
 		boolean result = false;
 		
-		if (vowel == 'a') {
+		if (vowel == 'a' || vowel == 'A') {
 			result = true;
-		}else if (vowel == 'A') {
+		}else if (vowel == 'e' || vowel == 'E') {
 			result = true;
-		}else if (vowel == 'e') {
+		}else if (vowel == 'i' || vowel == 'I') {
 			result = true;
-		}else if (vowel == 'E') {
+		}else if (vowel == 'o' || vowel == 'O') {
 			result = true;
-		}else if (vowel == 'i') {
-			result = true;
-		}else if (vowel == 'I') {
-			result = true;
-		}else if (vowel == 'o') {
-			result = true;
-		}else if (vowel == 'O') {
-			result = true;
-		}else if (vowel == 'u') {
-			result = true;
-		}else if (vowel == 'U') {
+		}else if (vowel == 'u' || vowel == 'U') {
 			result = true;
 		}
 		

@@ -35,10 +35,10 @@ public class Dragon {
 
 		int numOfEyes;
 
-		if (age < 0) {
-			numOfEyes = INPUT_ERROR;
-		} else {
+		if (age > 0) {
 			numOfEyes = checkNumOfHeads(age) * 2;
+		} else {
+			numOfEyes = INPUT_ERROR;
 		}
 
 		return numOfEyes;

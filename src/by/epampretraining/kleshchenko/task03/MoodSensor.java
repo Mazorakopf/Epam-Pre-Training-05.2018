@@ -13,7 +13,7 @@ public class MoodSensor {
 	public static final int NUMBER_FOR_FUNNY = 0;
     public static final int NUMBER_FOR_SMILE = 1;
     public static final int NUMBER_FOR_SAD = 2;
-    public static final int NUMBER_FOR_SURPRISEd = 3;
+    public static final int NUMBER_FOR_SURPRISED = 3;
     public static final int NUMBER_FOR_PLAYFUL = 4;
  
 	public static String scanningSoul() {
@@ -25,7 +25,7 @@ public class MoodSensor {
 			mood = SMILE;
 		} else if (rundomNum == NUMBER_FOR_SAD) {
 			mood = SAD;
-		}else if (rundomNum == NUMBER_FOR_SURPRISEd) {
+		}else if (rundomNum == NUMBER_FOR_SURPRISED) {
 			mood = SURPRISED;
 		}else if (rundomNum == NUMBER_FOR_PLAYFUL) {
 			mood = PLAYFUL;
