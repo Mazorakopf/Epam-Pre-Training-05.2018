@@ -22,7 +22,7 @@ public class NaturalNum {
 			}
 		}
 
-		return (sum == num) ? true : false;
+		return sum == num;
 	}
 
 	public static int maxDigit(int num) throws NaturalNumException {
