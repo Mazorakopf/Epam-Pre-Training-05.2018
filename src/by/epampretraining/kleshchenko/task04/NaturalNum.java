@@ -9,7 +9,7 @@ public class NaturalNum {
 
 	public static boolean isPerfect(int num) throws NaturalNumException {
 
-		int sum = 0;
+		int sum = -1;
 
 		checkNum(num);
 
