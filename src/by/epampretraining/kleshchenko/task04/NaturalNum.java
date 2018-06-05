@@ -28,12 +28,12 @@ public class NaturalNum {
 	public static int maxDigit(int num) throws NaturalNumException {
 
 		int maxDigit = num % RANK;
+		int tempNum = num;
 
 		if (num < 0) {
 			throw new NaturalNumException(ITS_NOT_NATURAL);
 		}
 
-		int tempNum = num;
 		for (int i = 1; i < getCountsOfDigits(num); i++) {
 			int nextDigit = (tempNum /= RANK) % RANK;
 			if (maxDigit < nextDigit) {
@@ -126,7 +126,14 @@ public class NaturalNum {
 			throw new NaturalNumException(ITS_NOT_NATURAL);
 		}
 
-		return b == 0 ? Math.abs(a) : gcd(b, a % b);
+		while (a != b) {
+			if (a > b) {
+				a = a - b;
+			} else {
+				b = b - a;
+			}
+		}
+		return b;
 	}
 
 	public static int lcm(int a, int b) throws NaturalNumException {
@@ -134,6 +141,7 @@ public class NaturalNum {
 		if (a < 0 || b < 0) {
 			throw new NaturalNumException(ITS_NOT_NATURAL);
 		}
+		
 		
 		return a / gcd(a, b) * b;
 	}
