@@ -32,7 +32,7 @@ public class NaturalNum {
 
 		checkNum(num);
 
-		for (int i = 1; i < getCountsOfDigits(num); i++) {
+		while (tempNum != 0) {
 			int nextDigit = (tempNum /= RANK) % RANK;
 			if (maxDigit < nextDigit) {
 				maxDigit = nextDigit;
@@ -43,15 +43,14 @@ public class NaturalNum {
 
 	public static int reverseNum(int num) throws NaturalNumException {
 
-		int lastDigit = num % RANK;
-		int newNum = lastDigit;
+		int newNum = 0;
 		int tempNum = num;
 
 		checkNum(num);
 
-		for (int i = 1; i < getCountsOfDigits(num); i++) {
-			int nextDigit = (tempNum /= RANK) % RANK;
-			newNum = newNum * RANK + nextDigit;
+		while (tempNum != 0) {
+			newNum = newNum * RANK + tempNum % RANK;
+			tempNum /= RANK;
 		}
 
 		return newNum;
@@ -128,13 +127,6 @@ public class NaturalNum {
 		checkNum(a, b);
 
 		return a / gcd(a, b) * b;
-	}
-
-	public static int getCountsOfDigits(int num) throws NaturalNumException {
-		
-		checkNum(num);
-		
-		return (num == 0) ? 1 : (int) Math.ceil(Math.log10(Math.abs(num) + 0.5));
 	}
 
 	public static void checkNum(int num) throws NaturalNumException {

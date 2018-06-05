@@ -8,6 +8,7 @@ public class Task04 {
 			System.out.println(HeadsOrTails.countHeads(10));
 			System.out.println(HeadsOrTails.countTails(10));
 			System.out.println(NaturalNum.isPerfect(6));
+			System.out.println(NaturalNum.maxDigit(584859));
 			System.out.println(NaturalNum.isPrime(5));
 			System.out.println(NaturalNum.numOfDifDigit(339634));
 			System.out.println(NaturalNum.gcd(15, 30));
