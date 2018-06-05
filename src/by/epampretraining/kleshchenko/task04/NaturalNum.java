@@ -1,50 +1,56 @@
 package by.epampretraining.kleshchenko.task04;
 
 public class NaturalNum {
-	
+
 	public static final int RANK = 10;
+	public static final int ITS_NOT_NATURAL = -1;
+	public static final int FIRST_PERFECT_NUM = 6;
 
 	public static boolean isPerfect(int num) {
 
-		int sum = 1;
-		boolean b = false;
-
-		if (num != 1) {
+		if (num >= FIRST_PERFECT_NUM) {
+			int sum = 1;
 			for (int div = 2; div < num; div++) {
 				if (num % div == 0) {
 					sum += div;
 				}
 			}
 			if (sum == num) {
-				b = true;
+				return true;
 			}
 		}
-		return b;
+
+		return false;
 	}
 
 	public static int maxDigit(int num) {
 
 		int maxDigit = num % RANK;
-		int countOfDigits = getCountsOfDigits(num);
 
-		for (int i = 1; i < countOfDigits; i++) {
-			int nextDigit = (num /= RANK) % RANK;
-			if (maxDigit < nextDigit) {
-				maxDigit = nextDigit;
+		if (num > 0) {
+			int tempNum = num;
+			for (int i = 1; i < getCountsOfDigits(num); i++) {
+				int nextDigit = (tempNum /= RANK) % RANK;
+				if (maxDigit < nextDigit) {
+					maxDigit = nextDigit;
+				}
 			}
+			return maxDigit;
 		}
-		return maxDigit;
+		return ITS_NOT_NATURAL;
 	}
 
 	public static int reverseNum(int num) {
 
-		int countOfDigits = getCountsOfDigits(num);
-		int newNum = num % RANK;
+		int lastDigit= num % RANK;
+		int newNum = lastDigit;
+		int tempNum = num;
 
-		for (int i = 1; i < countOfDigits; i++) {
-			int nextDigit = (num /= RANK) % RANK;
+		for (int i = 1; i < getCountsOfDigits(num); i++) {
+			int nextDigit = (tempNum /= RANK) % RANK;
 			newNum = newNum * RANK + nextDigit;
 		}
+
 		return newNum;
 	}
 
@@ -55,23 +61,21 @@ public class NaturalNum {
 
 	public static boolean isPrime(int num) {
 
-		boolean res = true;
-
 		for (int div = 2; div < num; div++) {
 			if (num % div == 0) {
-				res = false;
+				return false;
 			}
 		}
-		return res;
+
+		return true;
 	}
 
 	public static int numOfDifDigit(int num) {
 
 		int count = 0;
-		int tempNum;
 		for (int i = 0; i < RANK; i++) {
-			tempNum = num;
-			while (tempNum > 0) {
+			int tempNum = num;
+			while (tempNum != 0) {
 				if (tempNum % RANK == i) {
 					count++;
 					break;
@@ -86,7 +90,7 @@ public class NaturalNum {
 
 		StringBuilder str = new StringBuilder();
 
-		for (int div = 2; div < num; div++) {
+		for (int div = 2; div <= num; div++) {
 			if (num % div == 0 && isPrime(div)) {
 				str.append(div).append(" ");
 			}
