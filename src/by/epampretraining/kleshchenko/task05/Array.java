@@ -3,6 +3,8 @@ package by.epampretraining.kleshchenko.task05;
 import java.util.Random;
 
 public class Array {
+	
+	public static final int DIDNT_FIND = -1;
 
 	public static int[] init(int bound) {
 
@@ -27,9 +29,9 @@ public class Array {
 
 		int max = arr[0];
 
-		for (int j = 1; j < arr.length; j++) {
-			if (arr[j] > max) {
-				max = arr[j];
+		for (int i = 1; i < arr.length; i++) {
+			if (arr[i] > max) {
+				max = arr[i];
 			}
 		}
 
@@ -44,9 +46,9 @@ public class Array {
 
 		int min = arr[0];
 
-		for (int j = 1; j < arr.length; j++) {
-			if (arr[j] < min) {
-				min = arr[j];
+		for (int i = 1; i < arr.length; i++) {
+			if (arr[i] < min) {
+				min = arr[i];
 			}
 		}
 
@@ -124,7 +126,7 @@ public class Array {
 				return i;
 			}
 		}
-		return -1;
+		return DIDNT_FIND;
 	}
 
 	public static int findIndexFstLocalMax(int[] arr) {
@@ -138,15 +140,15 @@ public class Array {
 				return i;
 			}
 		}
-		return -1;
+		return DIDNT_FIND;
 	}
 
 	public static int[] reverse(int[] arr) {
 
-		for (int j = 0; j < arr.length / 2; j++) {
-			arr[j] = arr[j] ^ arr[arr.length - j - 1];
-			arr[arr.length - j - 1] = arr[j] ^ arr[arr.length - j - 1];
-			arr[j] = arr[j] ^ arr[arr.length - j - 1];
+		for (int i = 0; i < arr.length / 2; i++) {
+			arr[i] = arr[i] ^ arr[arr.length - i - 1];
+			arr[arr.length - i - 1] = arr[i] ^ arr[arr.length - i - 1];
+			arr[i] = arr[i] ^ arr[arr.length - i - 1];
 		}
 		return arr;
 	}
