@@ -45,7 +45,7 @@ public class TwoDimensionalArray {
 
 		double max = arr[0][0];
 		for (int i = 0; i < arr.length; i++) {
-			for (int j = 0; j < arr[i].length; j++) {
+			for (int j = 1; j < arr[i].length; j++) {
 				if (arr[i][j] > max) {
 					max = arr[i][j];
 				}
@@ -60,7 +60,7 @@ public class TwoDimensionalArray {
 
 		double min = arr[0][0];
 		for (int i = 0; i < arr.length; i++) {
-			for (int j = 0; j < arr[i].length; j++) {
+			for (int j = 1; j < arr[i].length; j++) {
 				if (arr[i][j] < min) {
 					min = arr[i][j];
 				}
@@ -73,10 +73,10 @@ public class TwoDimensionalArray {
 		
 		checkArray(arr);
 
-		double sum = 0;
+		double sum = arr[0][0];
 
 		for (int i = 0; i < arr.length; i++) {
-			for (int j = 0; j < arr[i].length; j++) {
+			for (int j = 1; j < arr[i].length; j++) {
 				sum += arr[i][j];
 			}
 		}
@@ -87,10 +87,10 @@ public class TwoDimensionalArray {
 		
 		checkArray(arr);
 
-		double mul = 1;
+		double mul = arr[0][0];
 
 		for (int i = 0; i < arr.length; i++) {
-			for (int j = 0; j < arr[i].length; j++) {
+			for (int j = 1; j < arr[i].length; j++) {
 				mul *= arr[i][j];
 			}
 		}
@@ -152,7 +152,7 @@ public class TwoDimensionalArray {
 		return arr;
 	}
 	
-	public static void checkArray(double[][] arr) {
+	private static void checkArray(double[][] arr) {
 		if (arr == null || arr.length == 0 || arr[0].length == 0) {
 			throw new IllegalArgumentException("No elements in the array!");
 		}
