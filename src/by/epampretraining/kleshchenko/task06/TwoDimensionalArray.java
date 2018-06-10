@@ -5,7 +5,7 @@ import java.util.Random;
 public class TwoDimensionalArray {
 
 	public static double[][] arrayInit(double[][] arr, double low, double high) {
-		
+
 		if (arr == null) {
 			throw new IllegalArgumentException("Couldn't initialize null reference.");
 		}
@@ -40,7 +40,7 @@ public class TwoDimensionalArray {
 	}
 
 	public static double getMaxValue(double[][] arr) {
-		
+
 		checkArray(arr);
 
 		double max = arr[0][0];
@@ -55,7 +55,7 @@ public class TwoDimensionalArray {
 	}
 
 	public static double getMinValue(double[][] arr) {
-		
+
 		checkArray(arr);
 
 		double min = arr[0][0];
@@ -70,13 +70,13 @@ public class TwoDimensionalArray {
 	}
 
 	public static double average(double[][] arr) {
-		
+
 		checkArray(arr);
 
-		double sum = arr[0][0];
+		double sum = 1;
 
 		for (int i = 0; i < arr.length; i++) {
-			for (int j = 1; j < arr[i].length; j++) {
+			for (int j = 0; j < arr[i].length; j++) {
 				sum += arr[i][j];
 			}
 		}
@@ -84,26 +84,42 @@ public class TwoDimensionalArray {
 	}
 
 	public static double averageGeometric(double[][] arr) {
-		
+
 		checkArray(arr);
 
-		double mul = arr[0][0];
+		double mul = 1;
 
 		for (int i = 0; i < arr.length; i++) {
-			for (int j = 1; j < arr[i].length; j++) {
+			for (int j = 0; j < arr[i].length; j++) {
 				mul *= arr[i][j];
 			}
 		}
 		return Math.pow(mul, 1. / (arr.length * arr[0].length));
 	}
-	
+
 	public static int[] indexFstLocalMax(double[][] arr) {
-		
+
 		checkArray(arr);
 
-		for (int i = 1; i < arr.length - 1; i++) {
-			for (int j = 1; j < arr[i].length - 1; j++) {
-				if (arr[i][j] > arr[i - 1][j]  && arr[i][j] > arr[i][j - 1] && arr[i][j] > arr[i + 1][j]
+		for (int i = 0; i < arr.length; i++) {
+			for (int j = 0; j < arr[i].length; j++) {
+
+				if (i > 0 && i < arr.length - 1 && j > 0 && j < arr[i].length - 1 && arr[i][j] > arr[i - 1][j]
+						&& arr[i][j] > arr[i][j - 1] && arr[i][j] > arr[i + 1][j] && arr[i][j] > arr[i][j + 1]) {
+					return new int[] { i, j };
+				} else if (i == 0 && j == 0 && arr[i][j] > arr[i + 1][j] && arr[i][j] > arr[i][j + 1]) {
+					return new int[] { i, j };
+				} else if (i == 0 && j == arr[i].length - 1 && arr[i][j] > arr[i + 1][j] && arr[i][j] > arr[i][j - 1]) {
+					return new int[] { i, j };
+				} else if (i == 0 && arr[i][j] > arr[i + 1][j] && arr[i][j] > arr[i][j + 1]
+						&& arr[i][j] > arr[i][j - 1]) {
+					return new int[] { i, j };
+				} else if (i == arr.length - 1 && j == 0 && arr[i][j] > arr[i - 1][j] && arr[i][j] > arr[i][j + 1]) {
+					return new int[] { i, j };
+				} else if (i == arr.length - 1 && j == arr[i].length - 1 && arr[i][j] > arr[i - 1][j]
+						&& arr[i][j] > arr[i][j - 1]) {
+					return new int[] { i, j };
+				} else if (i == arr.length - 1 && arr[i][j] > arr[i - 1][j] && arr[i][j] > arr[i][j - 1]
 						&& arr[i][j] > arr[i][j + 1]) {
 					return new int[] { i, j };
 				}
@@ -111,14 +127,29 @@ public class TwoDimensionalArray {
 		}
 		return new int[] { -1, -1 };
 	}
-	
+
 	public static int[] indexFstLocalMin(double[][] arr) {
-		
+
 		checkArray(arr);
 
-		for (int i = 1; i < arr.length - 1; i++) {
-			for (int j = 1; j < arr[i].length - 1; j++) {
-				if (arr[i][j] < arr[i - 1][j]  && arr[i][j] < arr[i][j - 1] && arr[i][j] < arr[i + 1][j]
+		for (int i = 0; i < arr.length; i++) {
+			for (int j = 0; j < arr[i].length; j++) {
+				if (i > 0 && i < arr.length - 1 && j > 0 && j < arr[i].length - 1 && arr[i][j] < arr[i - 1][j]
+						&& arr[i][j] < arr[i][j - 1] && arr[i][j] < arr[i + 1][j] && arr[i][j] < arr[i][j + 1]) {
+					return new int[] { i, j };
+				} else if (i == 0 && j == 0 && arr[i][j] < arr[i + 1][j] && arr[i][j] < arr[i][j + 1]) {
+					return new int[] { i, j };
+				} else if (i == 0 && j == arr[i].length - 1 && arr[i][j] < arr[i + 1][j] && arr[i][j] < arr[i][j - 1]) {
+					return new int[] { i, j };
+				} else if (i == 0 && arr[i][j] < arr[i + 1][j] && arr[i][j] < arr[i][j + 1]
+						&& arr[i][j] < arr[i][j - 1]) {
+					return new int[] { i, j };
+				} else if (i == arr.length - 1 && j == 0 && arr[i][j] < arr[i - 1][j] && arr[i][j] < arr[i][j + 1]) {
+					return new int[] { i, j };
+				} else if (i == arr.length - 1 && j == arr[i].length - 1 && arr[i][j] < arr[i - 1][j]
+						&& arr[i][j] < arr[i][j - 1]) {
+					return new int[] { i, j };
+				} else if (i == arr.length - 1 && arr[i][j] < arr[i - 1][j] && arr[i][j] < arr[i][j - 1]
 						&& arr[i][j] < arr[i][j + 1]) {
 					return new int[] { i, j };
 				}
@@ -127,9 +158,8 @@ public class TwoDimensionalArray {
 		return new int[] { -1, -1 };
 	}
 
-
 	public static double[][] transpose(double[][] arr) {
-		
+
 		checkArray(arr);
 
 		if (arr.length == arr[0].length) {
@@ -151,10 +181,10 @@ public class TwoDimensionalArray {
 		}
 		return arr;
 	}
-	
+
 	private static void checkArray(double[][] arr) {
 		if (arr == null || arr.length == 0 || arr[0].length == 0) {
 			throw new IllegalArgumentException("No elements in the array!");
 		}
-}
+	}
 }
