@@ -4,7 +4,7 @@ import java.util.Random;
 
 public class TwoDimensionalArray {
 
-	public static double[][] arrayInit(double[][] arr, double low, double high) {
+	public static void arrayInit(double[][] arr, double low, double high) {
 
 		if (arr == null) {
 			throw new IllegalArgumentException("Couldn't initialize null reference.");
@@ -16,7 +16,6 @@ public class TwoDimensionalArray {
 				arr[i][j] = random.nextDouble() * (high - low) + low;
 			}
 		}
-		return arr;
 	}
 
 	public static String toString(double[][] arr) {
@@ -45,7 +44,7 @@ public class TwoDimensionalArray {
 
 		double max = arr[0][0];
 		for (int i = 0; i < arr.length; i++) {
-			for (int j = 1; j < arr[i].length; j++) {
+			for (int j = 0; j < arr[i].length; j++) {
 				if (arr[i][j] > max) {
 					max = arr[i][j];
 				}
@@ -60,7 +59,7 @@ public class TwoDimensionalArray {
 
 		double min = arr[0][0];
 		for (int i = 0; i < arr.length; i++) {
-			for (int j = 1; j < arr[i].length; j++) {
+			for (int j = 0; j < arr[i].length; j++) {
 				if (arr[i][j] < min) {
 					min = arr[i][j];
 				}
@@ -101,25 +100,11 @@ public class TwoDimensionalArray {
 
 		checkArray(arr);
 
-		for (int i = 0; i < arr.length; i++) {
-			for (int j = 0; j < arr[i].length; j++) {
+		int preLast = arr.length - 1;
+		for (int i = 1; i < preLast; i++) {
+			for (int j = 1; j < arr[i].length - 1; j++) {
 
-				if (i > 0 && i < arr.length - 1 && j > 0 && j < arr[i].length - 1 && arr[i][j] > arr[i - 1][j]
-						&& arr[i][j] > arr[i][j - 1] && arr[i][j] > arr[i + 1][j] && arr[i][j] > arr[i][j + 1]) {
-					return new int[] { i, j };
-				} else if (i == 0 && j == 0 && arr[i][j] > arr[i + 1][j] && arr[i][j] > arr[i][j + 1]) {
-					return new int[] { i, j };
-				} else if (i == 0 && j == arr[i].length - 1 && arr[i][j] > arr[i + 1][j] && arr[i][j] > arr[i][j - 1]) {
-					return new int[] { i, j };
-				} else if (i == 0 && arr[i][j] > arr[i + 1][j] && arr[i][j] > arr[i][j + 1]
-						&& arr[i][j] > arr[i][j - 1]) {
-					return new int[] { i, j };
-				} else if (i == arr.length - 1 && j == 0 && arr[i][j] > arr[i - 1][j] && arr[i][j] > arr[i][j + 1]) {
-					return new int[] { i, j };
-				} else if (i == arr.length - 1 && j == arr[i].length - 1 && arr[i][j] > arr[i - 1][j]
-						&& arr[i][j] > arr[i][j - 1]) {
-					return new int[] { i, j };
-				} else if (i == arr.length - 1 && arr[i][j] > arr[i - 1][j] && arr[i][j] > arr[i][j - 1]
+				if (arr[i][j] > arr[i - 1][j] && arr[i][j] > arr[i][j - 1] && arr[i][j] > arr[i + 1][j]
 						&& arr[i][j] > arr[i][j + 1]) {
 					return new int[] { i, j };
 				}
@@ -132,25 +117,11 @@ public class TwoDimensionalArray {
 
 		checkArray(arr);
 
-		for (int i = 0; i < arr.length; i++) {
-			for (int j = 0; j < arr[i].length; j++) {
-				if (i > 0 && i < arr.length - 1 && j > 0 && j < arr[i].length - 1 && arr[i][j] < arr[i - 1][j]
-						&& arr[i][j] < arr[i][j - 1] && arr[i][j] < arr[i + 1][j] && arr[i][j] < arr[i][j + 1]) {
-					return new int[] { i, j };
-				} else if (i == 0 && j == 0 && arr[i][j] < arr[i + 1][j] && arr[i][j] < arr[i][j + 1]) {
-					return new int[] { i, j };
-				} else if (i == 0 && j == arr[i].length - 1 && arr[i][j] < arr[i + 1][j] && arr[i][j] < arr[i][j - 1]) {
-					return new int[] { i, j };
-				} else if (i == 0 && arr[i][j] < arr[i + 1][j] && arr[i][j] < arr[i][j + 1]
-						&& arr[i][j] < arr[i][j - 1]) {
-					return new int[] { i, j };
-				} else if (i == arr.length - 1 && j == 0 && arr[i][j] < arr[i - 1][j] && arr[i][j] < arr[i][j + 1]) {
-					return new int[] { i, j };
-				} else if (i == arr.length - 1 && j == arr[i].length - 1 && arr[i][j] < arr[i - 1][j]
-						&& arr[i][j] < arr[i][j - 1]) {
-					return new int[] { i, j };
-				} else if (i == arr.length - 1 && arr[i][j] < arr[i - 1][j] && arr[i][j] < arr[i][j - 1]
-						&& arr[i][j] < arr[i][j + 1]) {
+		int preLast = arr.length - 1;
+		for (int i = 1; i < preLast; i++) {
+			for (int j = 1; j < arr[i].length - 1; j++) {
+				if (arr[i][j] < arr[i][j + 1] && arr[i][j] < arr[i][j - 1] && arr[i][j] < arr[i + 1][j]
+						&& arr[i][j] < arr[i - 1][j]) {
 					return new int[] { i, j };
 				}
 			}

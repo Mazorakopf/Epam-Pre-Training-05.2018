@@ -3,26 +3,25 @@ package by.epampretraining.kleshchenko.task05;
 import java.util.Random;
 
 public class Array {
-	
+
 	public static final int DIDNT_FIND = -1;
 
-	public static int[] init(int bound) {
-
-		if (bound <= 0) {
-			throw new NegativeArraySizeException("Invalid bound. Couldn't initialize array");
+	public static void init(int[] arr, int low, int high) {
+		
+		if (arr == null) {
+			throw new IllegalArgumentException("Couldn't initialize null reference.");
 		}
 
-		int[] arr = new int[bound];
 		Random random = new Random();
 
-		for (int i = 0; i < bound; i++) {
-			arr[i] = random.nextInt(99);
+		for (int i = 0; i < arr.length; i++) {
+			arr[i] = random.nextInt(high - low) + low;
 		}
-		return arr;
+
 	}
 
 	public static int globalMaxElement(int[] arr) {
-		
+
 		if (arr == null) {
 			throw new IllegalArgumentException("No elements in array");
 		}
@@ -39,7 +38,7 @@ public class Array {
 	}
 
 	public static int globalMinElement(int[] arr) {
-		
+
 		if (arr == null) {
 			throw new IllegalArgumentException("No elements in array");
 		}
@@ -56,13 +55,13 @@ public class Array {
 	}
 
 	public static double average(int[] arr) {
-		
+
 		for (int value : arr) {
 			if (arr == null || value < 0) {
 				throw new IllegalArgumentException("No elements in array or array consist negative element");
 			}
 		}
-		
+
 		double sum = 0;
 
 		for (int value : arr) {
@@ -72,13 +71,13 @@ public class Array {
 	}
 
 	public static double averageGeometric(int[] arr) {
-		
+
 		for (int value : arr) {
 			if (arr == null || value < 0) {
 				throw new IllegalArgumentException("No elements in array or array consist negative element");
 			}
 		}
-		
+
 		double mul = 1;
 
 		for (int value : arr) {
@@ -88,7 +87,7 @@ public class Array {
 	}
 
 	public static boolean isIcreasingSequence(int[] arr) {
-		
+
 		if (arr == null || arr.length < 2) {
 			throw new IllegalArgumentException("No elements in array or not enough elements");
 		}
@@ -102,7 +101,7 @@ public class Array {
 	}
 
 	public static boolean isDecreasingSequence(int[] arr) {
-		
+
 		if (arr == null || arr.length < 2) {
 			throw new IllegalArgumentException("No elements in array or not enough elements");
 		}
@@ -121,7 +120,8 @@ public class Array {
 			throw new IllegalArgumentException("No elements in array or not enough elements");
 		}
 
-		for (int i = 1; i < arr.length - 1; i++) {
+		int preLast = arr.length - 1;
+		for (int i = 1; i < preLast; i++) {
 			if (arr[i - 1] > arr[i] && arr[i] < arr[i + 1]) {
 				return i;
 			}
@@ -130,12 +130,13 @@ public class Array {
 	}
 
 	public static int findIndexFstLocalMax(int[] arr) {
-		
+
 		if (arr == null || arr.length < 3) {
 			throw new IllegalArgumentException("No elements in array or not enough elements");
 		}
 
-		for (int i = 1; i < arr.length - 1; i++) {
+		int preLast = arr.length - 1;
+		for (int i = 1; i < preLast; i++) {
 			if (arr[i - 1] < arr[i] && arr[i] > arr[i + 1]) {
 				return i;
 			}
@@ -143,13 +144,13 @@ public class Array {
 		return DIDNT_FIND;
 	}
 
-	public static int[] reverse(int[] arr) {
+	public static void reverse(int[] arr) {
 
-		for (int i = 0; i < arr.length / 2; i++) {
+		int center = arr.length / 2;
+		for (int i = 0; i < center; i++) {
 			arr[i] = arr[i] ^ arr[arr.length - i - 1];
 			arr[arr.length - i - 1] = arr[i] ^ arr[arr.length - i - 1];
 			arr[i] = arr[i] ^ arr[arr.length - i - 1];
 		}
-		return arr;
 	}
 }
