@@ -37,6 +37,15 @@ public class Bus extends Car {
 		return true;
 	}
 
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + numOfSeats;
+		return result;
+	}
+
+	@Override
 	public String toString() {
 		return "[ " + super.toString() + " " + numOfSeats + " ]";
 	}

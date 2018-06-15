@@ -2,7 +2,7 @@ package by.epampretraining.kleshchenko.task07.util;
 
 public interface List<T> {
 	
-    public int size();
+    public int number();
 
     public boolean isEmpty();
     

@@ -11,3 +11,5 @@ Task 04 "Loop statements. Iterative algorithms"
 Task 05 "One-Dimensional Arrays"
 
 Task 06 "MultidimensionalArrays"
+
+Task 07 "OOP"

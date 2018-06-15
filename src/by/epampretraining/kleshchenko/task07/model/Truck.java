@@ -2,7 +2,7 @@ package by.epampretraining.kleshchenko.task07.model;
 
 public class Truck extends Car{
 
-	private double volume;
+	private double tonnage;
 	
 	public Truck() {
 
@@ -10,23 +10,44 @@ public class Truck extends Car{
 
 	public Truck(long id, String brand, String model, int yearModel, double cost, double tonnage) {
 		super(id, brand, model, yearModel, cost);
-		this.volume = tonnage;
+		this.tonnage = tonnage;
 	}
 	
 	public Truck(Truck anotherCar) {
-		this.volume = anotherCar.volume;
+		this.tonnage = anotherCar.tonnage;
 	}
 
 	public double getTonnage() {
-		return volume;
+		return tonnage;
 	}
 
 	public void setTonnage(double tonnage) {
-		this.volume = tonnage;
+		this.tonnage = tonnage;
 	}
 
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (getClass() != obj.getClass())
+			return false;
+		Truck other = (Truck) obj;
+		if (tonnage != other.tonnage)
+			return false;
+		return true;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + (int) tonnage;
+		return result;
+	}
+	
+	@Override
 	public String toString() {
-		return "[ " + super.toString() + " " + volume + " ]";
+		return "[ " + super.toString() + " " + tonnage + " ]";
 	}
 	
 }

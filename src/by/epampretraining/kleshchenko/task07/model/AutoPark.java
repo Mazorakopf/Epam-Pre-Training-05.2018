@@ -1,5 +1,7 @@
 package by.epampretraining.kleshchenko.task07.model;
 
+import java.util.Arrays;
+
 import by.epampretraining.kleshchenko.task07.util.CarList;
 
 public class AutoPark {
@@ -22,20 +24,8 @@ public class AutoPark {
 		this.cars = cars;
 	}
 	
-	public String toString(Car[] c) {
-		if (c == null)
-			return "null";
-		int iMax = c.length - 1;
-		if (iMax == -1)
-			return "[]";
-
-		StringBuilder b = new StringBuilder();
-		b.append('[');
-		for (int i = 0;; i++) {
-			b.append(c[i]);
-			if (i == iMax)
-				return b.append(']').toString();
-			b.append(", ");
-		}
+	@Override
+	public String toString() {
+		return Arrays.toString(cars.toArray());
 	}
 }

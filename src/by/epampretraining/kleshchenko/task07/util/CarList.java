@@ -10,14 +10,14 @@ public class CarList implements List<Car> {
 
 	private Car[] carArray;
 	private int size;
-	
+
 	public CarList() {
 		this.carArray = DEFAULTCAPACITY_EMPTY_CARARRAY;
 		size = 0;
 	}
 
 	@Override
-	public int size() {
+	public int number() {
 		return size;
 	}
 
