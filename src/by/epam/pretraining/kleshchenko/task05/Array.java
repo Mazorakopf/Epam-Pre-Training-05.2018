@@ -71,7 +71,7 @@ public class Array {
 		double mul = 1;
 
 		for (int value : arr) {
-			if (!(value < 1)){
+			if (value < 0){
 				return 0;
 			}
 			mul *= value;
