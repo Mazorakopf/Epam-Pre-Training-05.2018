@@ -14,7 +14,7 @@ public class Test {
 
 		System.out.println("Array " + Arrays.toString(arr));
 
-		System.out.println("It's increasing sequence? " + Array.isIcreasingSequence(arr));
+		System.out.println("It's increasing sequence? " + Array.isIncreasingSequence(arr));
 		System.out.println("It's deceasing sequence? " + Array.isDecreasingSequence(arr));
 
 		System.out.println("Arithmetical mean: " + Array.average(arr));
