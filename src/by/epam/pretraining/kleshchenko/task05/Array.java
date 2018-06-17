@@ -6,7 +6,7 @@ public class Array {
 
 	public static final int DIDNT_FIND = -1;
 	public static final String NULL_REFERENCE = "Couldn't initialize null reference";
-	public static final String EMPTY_ARRAY = "No elements in array";
+	public static final String EMPTY_ARRAY = "No elements in array!!!";
 
 	public static void init(int[] arr, int lowLimit, int upperLimit) {
 
@@ -71,10 +71,13 @@ public class Array {
 		double mul = 1;
 
 		for (int value : arr) {
+			if (!(value < 1)){
+				return 0;
+			}
 			mul *= value;
 		}
 
-		return mul > 0 ? Math.pow(mul, 1. / arr.length) : 0;
+		return Math.pow(mul, 1. / arr.length);
 	}
 
 	public static boolean isIncreasingSequence(int[] arr) {
@@ -88,7 +91,7 @@ public class Array {
 		}
 
 		for (int i = 1; i < arr.length; i++) {
-			if (arr[i - 1] < arr[i]) {
+			if (arr[i - 1] > arr[i]) {
 				res = false;
 			}
 		}
@@ -106,7 +109,7 @@ public class Array {
 		}
 
 		for (int i = 1; i < arr.length; i++) {
-			if (arr[i - 1] > arr[i]) {
+			if (arr[i - 1] < arr[i]) {
 				res = false;
 			}
 		}

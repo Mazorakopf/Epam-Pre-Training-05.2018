@@ -25,8 +25,11 @@ public class Test {
 
 		System.out.println("Index of local maximum extreme: " + Array.findIndexFstLocalMax(arr));
 		System.out.println("Index of local minimum extreme: " + Array.findIndexFstLocalMin(arr));
-		System.out.println("Global maximum extreme: " + Array.globalMaxElement(arr));
-		System.out.println("Global minimum extreme: " + Array.globalMinElement(arr));
-
+		try{
+			System.out.println("Global maximum extreme: " + Array.globalMaxElement(arr));
+			System.out.println("Global minimum extreme: " + Array.globalMinElement(arr));
+		}catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
 	}
 }
