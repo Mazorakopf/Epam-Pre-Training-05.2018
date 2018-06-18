@@ -3,44 +3,58 @@ package by.epam.pretraining.kleshchenko.task06;
 import java.util.Random;
 
 public class TwoDimensionalArray {
+	
+	public static final String NULL_REFERENCE = "Couldn't initialize null reference.";
+	public static final String EMPTY_ARRAY = "No elements in the array!!!";
+	
+	public static void arrayInit(double[][] arr, double lowLimit, double upperLimit) {
 
-	public static void arrayInit(double[][] arr, double low, double high) {
-
-		if (arr == null) {
-			throw new IllegalArgumentException("Couldn't initialize null reference.");
-		}
+		isInitialize(arr);
 
 		Random random = new Random();
 		for (int i = 0; i < arr.length; i++) {
 			for (int j = 0; j < arr[i].length; j++) {
-				arr[i][j] = random.nextDouble() * (high - low) + low;
+				arr[i][j] = random.nextDouble() * (upperLimit - lowLimit) + lowLimit;
 			}
 		}
 	}
 
 	public static String toString(double[][] arr) {
+		
 		if (arr == null)
 			return "null";
 
 		int iMax = arr.length - 1;
-		if (iMax == -1)
+		if (iMax == -1) {
 			return "[]";
-
+		}
+		
 		StringBuilder b = new StringBuilder();
-		for (int i = 0; i < arr.length; i++) {
-			for (int j = 0; j < arr[i].length; j++) {
-				b.append(String.valueOf(arr[i][j]));
-				b.append("   ");
-
+		
+		int jMax = arr[0].length - 1;
+		if (jMax == -1) {
+			b.append("[");
+			for (int i = 0; i < arr.length; i++) {
+				b = i != arr.length - 1 ? b.append("[],") : b.append("[]");
 			}
-			b.append('\n');
+			b.append("]");
+		} else {
+			for (int i = 0; i < arr.length; i++) {
+				for (int j = 0; j < arr[i].length; j++) {
+					b.append(String.valueOf(arr[i][j]));
+					b.append("   ");
+
+				}
+				b.append('\n');
+			}
 		}
 		return b.toString();
 	}
 
 	public static double getMaxValue(double[][] arr) {
 
-		checkArray(arr);
+		isInitialize(arr);
+		isEmpty(arr);
 
 		double max = arr[0][0];
 		for (int i = 0; i < arr.length; i++) {
@@ -55,7 +69,8 @@ public class TwoDimensionalArray {
 
 	public static double getMinValue(double[][] arr) {
 
-		checkArray(arr);
+		isInitialize(arr);
+		isEmpty(arr);
 
 		double min = arr[0][0];
 		for (int i = 0; i < arr.length; i++) {
@@ -68,9 +83,10 @@ public class TwoDimensionalArray {
 		return min;
 	}
 
-	public static double average(double[][] arr) {
+	public static double calcAverage(double[][] arr) {
 
-		checkArray(arr);
+		isInitialize(arr);
+		isEmpty(arr);
 
 		double sum = 0;
 
@@ -82,30 +98,36 @@ public class TwoDimensionalArray {
 		return sum / (arr.length * arr[0].length);
 	}
 
-	public static double averageGeometric(double[][] arr) {
+	public static double calcGeometricAverage(double[][] arr) {
 
-		checkArray(arr);
+		isInitialize(arr);
+		isEmpty(arr);
 
 		double mul = 1;
 
 		for (int i = 0; i < arr.length; i++) {
 			for (int j = 0; j < arr[i].length; j++) {
+				if (mul < 0) {
+					mul = 0;
+				}
 				mul *= arr[i][j];
 			}
 		}
 		return Math.pow(mul, 1. / (arr.length * arr[0].length));
 	}
 
-	public static int[] indexFstLocalMax(double[][] arr) {
+	public static int[] getIndexFstLocalMax(double[][] arr) {
 
-		checkArray(arr);
+		isInitialize(arr);
+		isEmpty(arr);
 
-		int preLast = arr.length - 1;
-		for (int i = 1; i < preLast; i++) {
-			for (int j = 1; j < arr[i].length - 1; j++) {
+		int column = arr.length - 1;
+		for (int i = 1; i < column; i++) {
+			int row = arr[i].length - 1;
+			for (int j = 1; j < row; j++) {
 
-				if (arr[i][j] > arr[i - 1][j] && arr[i][j] > arr[i][j - 1] && arr[i][j] > arr[i + 1][j]
-						&& arr[i][j] > arr[i][j + 1]) {
+				if (arr[i][j] > arr[i - 1][j] && arr[i][j] > arr[i][j - 1]
+						&& arr[i][j] > arr[i + 1][j] && arr[i][j] > arr[i][j + 1]) {
 					return new int[] { i, j };
 				}
 			}
@@ -113,15 +135,18 @@ public class TwoDimensionalArray {
 		return new int[] { -1, -1 };
 	}
 
-	public static int[] indexFstLocalMin(double[][] arr) {
+	public static int[] getIndexFstLocalMin(double[][] arr) {
 
-		checkArray(arr);
+		isInitialize(arr);
+		isEmpty(arr);
 
-		int preLast = arr.length - 1;
-		for (int i = 1; i < preLast; i++) {
-			for (int j = 1; j < arr[i].length - 1; j++) {
-				if (arr[i][j] < arr[i][j + 1] && arr[i][j] < arr[i][j - 1] && arr[i][j] < arr[i + 1][j]
-						&& arr[i][j] < arr[i - 1][j]) {
+		int column = arr.length - 1;
+		for (int i = 1; i < column; i++) {
+			int row = arr[i].length - 1;
+			for (int j = 1; j < row; j++) {
+				
+				if (arr[i][j] < arr[i][j + 1] && arr[i][j] < arr[i][j - 1]
+						&& arr[i][j] < arr[i + 1][j] && arr[i][j] < arr[i - 1][j]) {
 					return new int[] { i, j };
 				}
 			}
@@ -131,7 +156,8 @@ public class TwoDimensionalArray {
 
 	public static double[][] transpose(double[][] arr) {
 
-		checkArray(arr);
+		isInitialize(arr);
+		isEmpty(arr);
 
 		if (arr.length == arr[0].length) {
 			for (int i = 0; i < arr.length; i++) {
@@ -153,9 +179,15 @@ public class TwoDimensionalArray {
 		return arr;
 	}
 
-	private static void checkArray(double[][] arr) {
-		if (arr == null || arr.length == 0 || arr[0].length == 0) {
-			throw new IllegalArgumentException("No elements in the array!");
+	private static void isInitialize(double[][] arr) {
+		if (arr == null) {
+			throw new NullPointerException(NULL_REFERENCE);
+		}
+	}
+	
+	private static void isEmpty(double[][] arr) {
+		if (arr.length == 0 || arr[0].length == 0) {
+			throw new IllegalArgumentException(EMPTY_ARRAY);
 		}
 	}
 }

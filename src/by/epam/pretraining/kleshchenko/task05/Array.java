@@ -10,7 +10,7 @@ public class Array {
 
 	public static void init(int[] arr, int lowLimit, int upperLimit) {
 
-		isInitialize(arr, NULL_REFERENCE);
+		isInitialize(arr);
 
 		Random random = new Random();
 
@@ -20,9 +20,9 @@ public class Array {
 
 	}
 
-	public static int globalMaxElement(int[] arr) {
+	public static int getMax(int[] arr) {
 
-		isInitialize(arr, NULL_REFERENCE);
+		isInitialize(arr);
 		isEmpty(arr);
 
 		int max = arr[0];
@@ -36,9 +36,9 @@ public class Array {
 		return max;
 	}
 
-	public static int globalMinElement(int[] arr) {
+	public static int getMin(int[] arr) {
 
-		isInitialize(arr, NULL_REFERENCE);
+		isInitialize(arr);
 		isEmpty(arr);
 
 		int min = arr[0];
@@ -52,9 +52,10 @@ public class Array {
 		return min;
 	}
 
-	public static double average(int[] arr) {
+	public static double calcAverage(int[] arr) {
 
-		isInitialize(arr, NULL_REFERENCE);
+		isInitialize(arr);
+		isEmpty(arr);
 
 		double sum = 0;
 
@@ -64,9 +65,10 @@ public class Array {
 		return sum / arr.length;
 	}
 
-	public static double averageGeometric(int[] arr) {
+	public static double calcGeometricAverage(int[] arr) {
 
-		isInitialize(arr, NULL_REFERENCE);
+		isInitialize(arr);
+		isEmpty(arr);
 
 		double mul = 1;
 
@@ -84,15 +86,17 @@ public class Array {
 
 		boolean res = true;
 		
-		isInitialize(arr, NULL_REFERENCE);
+		isInitialize(arr);
+		isEmpty(arr);
 
-		if (arr.length < 2) {
+		if (arr.length < 2 || isElemEqual(arr)) {
 			res = false;
 		}
 
 		for (int i = 1; i < arr.length; i++) {
 			if (arr[i - 1] > arr[i]) {
 				res = false;
+				break;
 			}
 		}
 		return res;
@@ -102,15 +106,17 @@ public class Array {
 
 		boolean res = true;
 		
-		isInitialize(arr, NULL_REFERENCE);
+		isInitialize(arr);
+		isEmpty(arr);
 
-		if (arr.length < 2) {
+		if (arr.length < 2 || isElemEqual(arr)) {
 			res = false;
 		}
 
 		for (int i = 1; i < arr.length; i++) {
 			if (arr[i - 1] < arr[i]) {
 				res = false;
+				break;
 			}
 		}
 		return res;
@@ -118,7 +124,8 @@ public class Array {
 
 	public static int findIndexFstLocalMin(int[] arr) {
 
-		isInitialize(arr, NULL_REFERENCE);
+		isInitialize(arr);
+		isEmpty(arr);
 
 		int preLast = arr.length - 1;
 		for (int i = 1; i < preLast; i++) {
@@ -131,7 +138,8 @@ public class Array {
 
 	public static int findIndexFstLocalMax(int[] arr) {
 
-		isInitialize(arr, NULL_REFERENCE);
+		isInitialize(arr);
+		isEmpty(arr);
 
 		int preLast = arr.length - 1;
 		for (int i = 1; i < preLast; i++) {
@@ -144,7 +152,8 @@ public class Array {
 
 	public static void reverse(int[] arr) {
 
-		isInitialize(arr, NULL_REFERENCE);
+		isInitialize(arr);
+		isEmpty(arr);
 
 		int center = arr.length / 2;
 		for (int i = 0; i < center; i++) {
@@ -154,10 +163,20 @@ public class Array {
 		}
 	}
 
-	public static void isInitialize(int[] arr, String error) {
+	public static boolean isElemEqual(int[] arr) {
+		
+		for (int i = 1; i < arr.length; i++) {
+			if(arr[i - 1] != arr[i]) {
+				return false;
+			}
+		}
+		return true;
+	}
+	
+	public static void isInitialize(int[] arr) {
 
 		if (arr == null) {
-			throw new IllegalArgumentException(error);
+			throw new IllegalArgumentException(NULL_REFERENCE);
 		}
 	}
 
