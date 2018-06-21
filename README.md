@@ -13,3 +13,5 @@ Task 05 "One-Dimensional Arrays"
 Task 06 "MultidimensionalArrays"
 
 Task 07 "OOP"
+
+Task 10 "Recursive algorithms"
