@@ -13,12 +13,7 @@ public class RecursiveAlgorithms {
 			return ERROR_INPUT;
 		}
 
-		return calcSumOfDigitR(num);
-	}
-
-	public static int calcSumOfDigitR(int num) {
-
-		return num != 0 ? num % 10 + calcSumOfDigitR(num / DECREMENT) : 0;
+		return num != 0 ? num % 10 + calcSumOfDigit(num / DECREMENT) : 0;
 	}
 
 	public static long pow(int num, int exp) {
@@ -26,12 +21,7 @@ public class RecursiveAlgorithms {
 		if (num == 0 || exp < 0)
 			return ERROR_INPUT;
 
-		return powR(num, exp);
-	}
-
-	public static long powR(int num, int exp) {
-
-		return exp != 0 ? num * powR(num, exp - 1) : 1;
+		return exp != 0 ? num * pow(num, exp - 1) : 1;
 	}
 
 	public static boolean equals(int num, int standard) {
@@ -39,30 +29,17 @@ public class RecursiveAlgorithms {
 		if (num < 0 || standard < 0)
 			return false;
 
-		return equalsR(num, standard);
-	}
-
-	public static boolean equalsR(int num, int standard) {
-
-		return num != 0 ? equalsR(num / DECREMENT, standard - num % 10) : standard == 0;
+		return num != 0 ? equals(num / DECREMENT, standard - num % 10) : standard == 0;
 	}
 
 	public static long getFibonacci(int index) {
 
 		if (index < 1) {
 			return ERROR_INPUT;
-		}
-
-		return getFibonacciR(index);
-	}
-
-	public static long getFibonacciR(int index) {
-
-		if (index == 2) {
+		}else if (index == 2) {
 			return SECOND_FIB_NUM;
 		}
 
-		return index != 1 ? getFibonacciR(index - 1) + getFibonacciR(index - 2) : FIRST_FIB_NUM;
+		return index != 1 ? getFibonacci(index - 1) + getFibonacci(index - 2) : FIRST_FIB_NUM;
 	}
-
 }
