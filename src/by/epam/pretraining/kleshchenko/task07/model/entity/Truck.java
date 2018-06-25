@@ -12,6 +12,11 @@ public class Truck extends Car {
 		super(id, brand, model, yearModel, cost);
 		this.tonnage = tonnage;
 	}
+	
+	public Truck(Car anotherCar, double tonnage) {
+		super(anotherCar);
+		this.tonnage = tonnage;
+	}
 
 	public Truck(Truck anotherCar) {
 		this.tonnage = anotherCar.tonnage;

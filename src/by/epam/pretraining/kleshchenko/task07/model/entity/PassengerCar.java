@@ -13,6 +13,11 @@ public class PassengerCar extends Car {
 		this.bodyType = bodyType;
 	}
 	
+	public PassengerCar(Car anotherCar, String bodyType) {
+		super(anotherCar);
+		this.bodyType = bodyType;
+	}
+	
 	public PassengerCar(PassengerCar anotherCar) {
 		this.bodyType = anotherCar.bodyType;
 	}

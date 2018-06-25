@@ -12,6 +12,11 @@ public class Bus extends Car {
 		super(id, brand, model, yearModel, cost);
 		this.numOfSeats = numOfSeats;
 	}
+	
+	public Bus(Car anotherCar, int numOfSeats) {
+		super(anotherCar);
+		this.numOfSeats = numOfSeats;
+	}
 
 	public Bus(Bus anotherBus) {
 		this.numOfSeats = anotherBus.numOfSeats;
